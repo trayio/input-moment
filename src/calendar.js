@@ -26,7 +26,7 @@ export default class Calendar extends Component {
     if (prevMonth) m.subtract(1, 'month');
     if (nextMonth) m.add(1, 'month');
 
-    this.props.onChange(m);
+    this.props.internalChange(m, true);
   };
 
   prevMonth = e => {

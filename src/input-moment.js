@@ -24,8 +24,8 @@ export default class InputMoment extends Component {
     this.setState({ tab: tab });
   };
 
-  internalChange = m => {
-    this.setState({ moment: m });
+  internalChange = (m, s) => {
+    this.setState({ moment: m }, s ? this.submit : null);
   }
 
   componentWillReceiveProps = nextProps => {
@@ -67,6 +67,7 @@ export default class InputMoment extends Component {
 
         <div className="tabs">
           <Calendar
+            submit={this.submit}
             moment={this.state.moment}
             onChange={this.props.onChange}
             className={cx('tab', { 'is-active': tab === 0 })}
