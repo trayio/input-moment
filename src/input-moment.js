@@ -38,22 +38,24 @@ export default class InputMoment extends Component {
 
     return (
       <div className={cls} {...props}>
-        <div className="options">
-          <button
-            type="button"
-            className={cx('ion-calendar im-btn', { 'is-active': tab === 0 })}
-            onClick={e => this.handleClickTab(e, 0)}
-          >
-            Date
-          </button>
-          <button
-            type="button"
-            className={cx('ion-clock im-btn', { 'is-active': tab === 1 })}
-            onClick={e => this.handleClickTab(e, 1)}
-          >
-            Time
-          </button>
-        </div>
+        {!this.props.hideTabs ?
+          <div className="options">
+            <button
+              type="button"
+              className={cx('ion-calendar im-btn', { 'is-active': tab === 0 })}
+              onClick={e => this.handleClickTab(e, 0)}
+            >
+              Date
+            </button>
+            <button
+              type="button"
+              className={cx('ion-clock im-btn', { 'is-active': tab === 1 })}
+              onClick={e => this.handleClickTab(e, 1)}
+            >
+              Time
+            </button>
+          </div> : null
+        }
 
         <div className="tabs">
           <Calendar
