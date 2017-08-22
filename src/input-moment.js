@@ -25,7 +25,11 @@ export default class InputMoment extends Component {
   };
 
   internalChange = m => {
-    this.setState({moment: m});
+    this.setState({ moment: m });
+  }
+
+  componentWillReceiveProps = nextProps => {
+    this.setState({ tab: nextProps.tab });
   }
 
   render() {
