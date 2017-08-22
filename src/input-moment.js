@@ -11,7 +11,7 @@ export default class InputMoment extends Component {
   };
 
   state = {
-    tab: 0
+    tab: this.props.tab || 0
   };
 
   handleClickTab = (e, tab) => {
