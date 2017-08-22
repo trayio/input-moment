@@ -31,12 +31,12 @@ export default class Calendar extends Component {
 
   prevMonth = e => {
     e.preventDefault();
-    this.props.onChange(this.props.moment.subtract(1, 'month'));
+    this.props.internalChange(this.props.moment.subtract(1, 'month'));
   };
 
   nextMonth = e => {
     e.preventDefault();
-    this.props.onChange(this.props.moment.add(1, 'month'));
+    this.props.internalChange(this.props.moment.add(1, 'month'));
   };
 
   render() {
@@ -87,6 +87,16 @@ export default class Calendar extends Component {
             )}
           </tbody>
         </table>
+
+        {this.props.onDateSave
+          ? <button
+              type="button"
+              className="im-btn btn-save ion-checkmark"
+              onClick={this.handleSave}
+            >
+              Save
+            </button>
+          : null}
       </div>
     );
   }

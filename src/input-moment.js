@@ -11,18 +11,22 @@ export default class InputMoment extends Component {
   };
 
   state = {
+    moment: this.props.moment,
     tab: this.props.tab || 0
   };
+
+  submit = () => {
+    this.props.onChange(this.state.moment);
+  }
 
   handleClickTab = (e, tab) => {
     e.preventDefault();
     this.setState({ tab: tab });
   };
 
-  handleSave = e => {
-    e.preventDefault();
-    if (this.props.onSave) this.props.onSave();
-  };
+  internalChange = m => {
+    this.setState({moment: m});
+  }
 
   render() {
     const { tab } = this.state;
@@ -31,13 +35,13 @@ export default class InputMoment extends Component {
       className,
       prevMonthIcon,
       nextMonthIcon,
-      onSave,
+      onDateSave,
       ...props
     } = this.props;
     const cls = cx('m-input-moment', className);
 
     return (
-      <div className={cls} {...props}>
+      <div className={cls}>
         {!this.props.hideTabs ?
           <div className="options">
             <button
@@ -59,28 +63,20 @@ export default class InputMoment extends Component {
 
         <div className="tabs">
           <Calendar
-            className={cx('tab', { 'is-active': tab === 0 })}
-            moment={m}
+            moment={this.state.moment}
             onChange={this.props.onChange}
+            className={cx('tab', { 'is-active': tab === 0 })}
             prevMonthIcon={this.props.prevMonthIcon}
             nextMonthIcon={this.props.nextMonthIcon}
+            internalChange={this.internalChange}
           />
           <Time
+            moment={this.state.moment}
             className={cx('tab', { 'is-active': tab === 1 })}
-            moment={m}
-            onChange={this.props.onChange}
+            internalChange={this.internalChange}
+            submit={this.submit}
           />
         </div>
-
-        {this.props.onSave
-          ? <button
-              type="button"
-              className="im-btn btn-save ion-checkmark"
-              onClick={this.handleSave}
-            >
-              Save
-            </button>
-          : null}
       </div>
     );
   }

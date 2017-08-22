@@ -6,13 +6,13 @@ export default class extends Component {
   changeHours = pos => {
     const m = this.props.moment;
     m.hours(parseInt(pos.x, 10));
-    this.props.onChange(m);
+    this.props.internalChange(m);
   };
 
   changeMinutes = pos => {
     const m = this.props.moment;
     m.minutes(parseInt(pos.x, 10));
-    this.props.onChange(m);
+    this.props.internalChange(m);
   };
 
   render() {
@@ -44,6 +44,16 @@ export default class extends Component {
             onChange={this.changeMinutes}
           />
         </div>
+
+
+        <button
+            type="button"
+            className="im-btn btn-save ion-checkmark"
+            onClick={this.props.submit}
+          >
+          Set Time
+        </button>
+
       </div>
     );
   }
