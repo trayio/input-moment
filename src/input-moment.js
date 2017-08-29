@@ -11,13 +11,13 @@ export default class InputMoment extends Component {
   };
 
   state = {
-    moment: this.props.moment,
-    tab: this.props.tab || 0
+    tab: this.props.tab || 0,
+    moment: this.props.moment
   };
 
   submit = () => {
     this.props.onChange(this.state.moment);
-  }
+  };
 
   handleClickTab = (e, tab) => {
     e.preventDefault();
@@ -26,11 +26,21 @@ export default class InputMoment extends Component {
 
   internalChange = (m, s) => {
     this.setState({ moment: m }, s ? this.submit : null);
-  }
+  };
 
   componentWillReceiveProps = nextProps => {
-    this.setState({ tab: nextProps.tab });
-  }
+    const change = {};
+
+    if (this.props.tab !== nextProps.tab) {
+      change.tab = nextProps.tab;
+    }
+
+    if (!this.props.moment.isSame(nextProps.moment)) {
+      change.moment = nextProps.moment;
+    }
+
+    this.setState(change);
+  };
 
   render() {
     const { tab } = this.state;
