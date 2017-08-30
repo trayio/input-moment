@@ -50,6 +50,7 @@ export default class InputMoment extends Component {
       prevMonthIcon,
       nextMonthIcon,
       onDateSave,
+      local,
       ...props
     } = this.props;
     const cls = cx('m-input-moment', className);
@@ -77,6 +78,7 @@ export default class InputMoment extends Component {
 
         <div className="tabs">
           <Calendar
+            local={local}
             submit={this.submit}
             moment={this.state.moment}
             onChange={this.props.onChange}
@@ -86,6 +88,7 @@ export default class InputMoment extends Component {
             internalChange={this.internalChange}
           />
           <Time
+            local={local}
             moment={this.state.moment}
             className={cx('tab', { 'is-active': tab === 1 })}
             internalChange={this.internalChange}

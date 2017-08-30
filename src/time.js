@@ -16,7 +16,7 @@ export default class extends Component {
   };
 
   render() {
-    const m = this.props.moment;
+    const m = this.props.local ? this.props.moment.local() : this.props.moment;
 
     return (
       <div className={cx('m-time', this.props.className)}>

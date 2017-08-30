@@ -40,7 +40,7 @@ export default class Calendar extends Component {
   };
 
   render() {
-    const m = this.props.moment;
+    const m = this.props.local ? this.props.moment.local() : this.props.moment;
     const d = m.date();
     const d1 = m.clone().subtract(1, 'month').endOf('month').date();
     const d2 = m.clone().date(1).day();
