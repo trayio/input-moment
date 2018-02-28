@@ -53,7 +53,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/wangzuo/input-moment.git"
+    "url": "git@github.com:trayio/input-moment.git"
   },
   "keywords": [
     "react",
@@ -62,9 +62,5 @@
     "datetime",
     "picker",
     "moment"
-  ],
-  "bugs": {
-    "url": "https://github.com/wangzuo/input-moment/issues"
-  },
-  "homepage": "https://github.com/wangzuo/input-moment#readme"
+  ]
 }

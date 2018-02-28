@@ -435,6 +435,13 @@ exports[`render 1`] = `
           />
         </div>
       </div>
+      <button
+        className="im-btn btn-save ion-checkmark"
+        onClick={[Function]}
+        type="button"
+      >
+        Set Time
+      </button>
     </div>
   </div>
 </div>

@@ -22,9 +22,15 @@ export default class Calendar extends Component {
     const nextMonth = w >= 4 && i <= 14;
     const m = this.props.moment;
 
+    if (prevMonth) {
+      m.subtract(1, 'month');
+    }
+
+    if (nextMonth) {
+      m.add(1, 'month');
+    }
+
     m.date(i);
-    if (prevMonth) m.subtract(1, 'month');
-    if (nextMonth) m.add(1, 'month');
 
     this.props.internalChange(m, true);
   };
